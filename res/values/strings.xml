@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Vpn Reverse Tether</string>
+  <string name="result_fail_prepare">
+    Failed to prepare VpnService. You must allow VPN connections.
+  </string>
+  <string name="result_fail_start">
+    Failed to start service. Check adb logcat.
+  </string>
+  <string name="result_success">
+    Listening for connections!
+  </string>
+</resources>
