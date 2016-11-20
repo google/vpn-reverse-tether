@@ -2,4 +2,6 @@
 *.o
 bin/
 gen/
-
+/libs
+/obj
+/jni/forwarder

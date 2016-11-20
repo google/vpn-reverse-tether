@@ -44,15 +44,15 @@ This method leverages VpnService API and **does not require root access**.
 
 1. Build the native library:
 
-        $(ANDROID_NDK)/ndk-build
+        "$ANDROID_NDK/ndk-build"
 
 2. Build the apk and install it:
 
-        ANDROID_HOME=$(ANDROID_SDK) ant debug install
+        ANDROID_HOME="$ANDROID_SDK" ant debug install
 
 3. Build the host-side forwarder:
 
-        make -C jni
+        make --directory jni
 
 ### Eclipse
 
@@ -62,7 +62,7 @@ This method leverages VpnService API and **does not require root access**.
 
 2. Build the host-side forwarder:
 
-        make -C jni
+        make --directory jni
 
 ## Usage
 

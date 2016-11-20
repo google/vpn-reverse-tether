@@ -73,10 +73,15 @@ int get_local_tunnel(char* name) {
 
   struct sockaddr_un addr = {};
   addr.sun_family = AF_LOCAL;
-  strncpy(addr.sun_path, name, sizeof(addr.sun_path));
-  addr.sun_path[sizeof(addr.sun_path) - 1] = '\0';
 
-  if (connect(tunnel, (struct sockaddr*) &addr, sizeof(addr))) {
+  addr.sun_path[0] = '\0';
+  strncpy(addr.sun_path + 1, name, sizeof(addr.sun_path) - 1);
+
+  int addrlen = strlen(name);
+  if (addrlen > sizeof(addr.sun_path) - 1) addrlen = sizeof(addr.sun_path) - 1;
+  addrlen += 1 + sizeof(addr.sun_family);
+
+  if (connect(tunnel, (struct sockaddr*) &addr, addrlen)) {
     perror("Connect to tunnel");
     return -1;
   }
